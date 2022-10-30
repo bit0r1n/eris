@@ -1616,6 +1616,8 @@ declare namespace Eris {
       GUILD_STAGE_VOICE:    13;
       /** @deprecated */
       GUILD_STAGE:          13;
+      GUILD_DIRECTORY:      14;
+      GUILD_FORUM:          15;
     };
     ComponentTypes: {
       ACTION_ROW:  1;
@@ -1804,6 +1806,7 @@ declare namespace Eris {
       THREAD_STARTER_MESSAGE:                       21;
       GUILD_INVITE_REMINDER:                        22;
       CONTEXT_MENU_COMMAND:                         23;
+      AUTO_MODERATION_ACTION:                       24;
     };
     PermissionOverwriteTypes: {
       ROLE: 0;
@@ -3245,6 +3248,16 @@ declare namespace Eris {
     unsendMessage(messageID: string): Promise<void>;
   }
 
+  export class DirectoryChannel extends Channel {
+    type: Constants["ChannelTypes"]["GUILD_DIRECTORY"];
+  }
+
+  export class ForumChannel extends GuildChannel {
+    type: Constants["ChannelTypes"]["GUILD_FORUM"];
+    createInvite(options?: CreateInviteOptions, reason?: string): Promise<Invite<"withMetadata", this>>;
+    getInvites(): Promise<(Invite<"withMetadata", this>)[]>;
+  }
+
   export class PrivateThreadChannel extends ThreadChannel {
     threadMetadata: PrivateThreadMetadata;
     type: Constants["ChannelTypes"]["GUILD_PRIVATE_THREAD"];
@@ -3343,6 +3356,7 @@ declare namespace Eris {
     requestMembersPromise: { [s: string]: RequestMembersPromise };
     seq: number;
     sessionID: string | null;
+    resumeURL: string | null;
     status: "connecting" | "disconnected" | "handshaking" | "identifying" | "ready" | "resuming";
     unsyncedGuilds: number;
     ws: WebSocket | BrowserWebSocket | null;
