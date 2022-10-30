@@ -3,6 +3,8 @@ Eris [![NPM version](https://img.shields.io/npm/v/eris.svg?style=flat-square&col
 
 A Node.js wrapper for interfacing with Discord.
 
+## This fork is not aimed to fully cover new API, only for usable state for [GenAi](https://genai.bot)
+
 Installing
 ----------
 
