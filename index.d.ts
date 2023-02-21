@@ -204,7 +204,7 @@ declare namespace Eris {
   }
   interface ApplicationCommandOptionsChoice<T extends ApplicationCommandOptionsTypesWithChoices = ApplicationCommandOptionsTypesWithChoices> {
     name: string;
-    name_localizations?: string;
+    name_localizations?: Record<string, string>;
     value:
     T extends Constants["ApplicationCommandOptionTypes"]["STRING"] ? string :
       T extends Constants["ApplicationCommandOptionTypes"]["INTEGER" | "NUMBER"] ? number :
