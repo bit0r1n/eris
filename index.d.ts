@@ -213,10 +213,10 @@ declare namespace Eris {
     /** @deprecated */
     defaultPermission?: boolean;
     description?: U extends Constants["ApplicationCommandTypes"]["CHAT_INPUT"] ? string : "" | void;
-    descriptionLocalizations?: U extends Constants["ApplicationCommandTypes"]["CHAT_INPUT"] ? Record<LocaleStrings, string> | null : null;
+    description_localizations?: U extends Constants["ApplicationCommandTypes"]["CHAT_INPUT"] ? Record<LocaleStrings, string> | null : null;
     dmPermission?: T extends true ? never : boolean | null;
     name?: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     nsfw?: boolean;
     options?: ApplicationCommandOptions[];
   }
@@ -232,14 +232,15 @@ declare namespace Eris {
   }
   interface ApplicationCommandOption<T extends Constants["ApplicationCommandOptionTypes"][Exclude<keyof Constants["ApplicationCommandOptionTypes"], "SUB_COMMAND" | "SUB_COMMAND_GROUP">]> {
     description: string;
-    descriptionLocalizations?: Record<LocaleStrings, string> | null;
+    description_localizations?: Record<LocaleStrings, string> | null;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     required?: boolean;
     type: T;
   }
   interface ApplicationCommandOptionChoice<T extends Constants["ApplicationCommandOptionTypes"][keyof Pick<Constants["ApplicationCommandOptionTypes"], "STRING" | "INTEGER" | "NUMBER">] | unknown = unknown> {
     name: string;
+    name_localizations?: Record<LocaleStrings, string> | null;
     value: T extends Constants["ApplicationCommandOptionTypes"]["STRING"]
       ? string
       : T extends Constants["ApplicationCommandOptionTypes"]["NUMBER"]
@@ -250,17 +251,17 @@ declare namespace Eris {
   }
   interface ApplicationCommandOptionsSubCommand {
     description: string;
-    descriptionLocalizations?: Record<LocaleStrings, string> | null;
+    description_localizations?: Record<LocaleStrings, string> | null;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     options?: ApplicationCommandOptionsWithValue[];
     type: Constants["ApplicationCommandOptionTypes"]["SUB_COMMAND"];
   }
   interface ApplicationCommandOptionsSubCommandGroup {
     description: string;
-    descriptionLocalizations?: Record<LocaleStrings, string> | null;
+    description_localizations?: Record<LocaleStrings, string> | null;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     options?: (ApplicationCommandOptionsSubCommand | ApplicationCommandOptionsWithValue)[];
     type: Constants["ApplicationCommandOptionTypes"]["SUB_COMMAND_GROUP"];
   }
@@ -268,9 +269,9 @@ declare namespace Eris {
     autocomplete?: boolean;
     choices?: ApplicationCommandOptionChoice<T>[];
     description: string;
-    descriptionLocalizations?: Record<LocaleStrings, string> | null;
+    description_localizations?: Record<LocaleStrings, string> | null;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     required?: boolean;
     type: T;
   }
@@ -278,11 +279,11 @@ declare namespace Eris {
     autocomplete?: boolean;
     choices?: ApplicationCommandOptionChoice<T>[];
     description: string;
-    descriptionLocalizations?: Record<LocaleStrings, string> | null;
+    description_localizations?: Record<LocaleStrings, string> | null;
     max_value?: number;
     min_value?: number;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     required?: boolean;
     type: T;
   }
@@ -1956,11 +1957,11 @@ declare namespace Eris {
     /** @deprecated */
     defaultPermission?: boolean | null;
     description: U extends Constants["ApplicationCommandTypes"]["CHAT_INPUT"] ? string : "";
-    descriptionLocalizations?: U extends "CHAT_INPUT" ? Record<LocaleStrings, string> | null : null;
+    description_localizations?: U extends "CHAT_INPUT" ? Record<LocaleStrings, string> | null : null;
     dmPermission?: boolean;
     guild: T extends true ? PossiblyUncachedGuild : never;
     name: string;
-    nameLocalizations?: Record<LocaleStrings, string> | null;
+    name_localizations?: Record<LocaleStrings, string> | null;
     nsfw?: boolean;
     options?: ApplicationCommandOptions[];
     type?: U;
