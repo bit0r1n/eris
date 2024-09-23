@@ -22,7 +22,7 @@ declare namespace Eris {
   // Application Commands
   type ApplicationCommandOptions = ApplicationCommandOptionsSubCommand | ApplicationCommandOptionsSubCommandGroup | ApplicationCommandOptionsWithValue;
   type ApplicationCommandOptionsBoolean = ApplicationCommandOption<Constants["ApplicationCommandOptionTypes"]["BOOLEAN"]>;
-  type ApplicationCommandOptionsChannel = ApplicationCommandOption<Constants["ApplicationCommandOptionTypes"]["CHANNEL"]>;
+  type ApplicationCommandOptionsChannel = ApplicationCommandOption<Constants["ApplicationCommandOptionTypes"]["CHANNEL"]> & ChannelTypeOption;
   type ApplicationCommandOptionsInteger = ApplicationCommandOptionsIntegerWithAutocomplete | ApplicationCommandOptionsIntegerWithoutAutocomplete | ApplicationCommandOptionsIntegerWithMinMax;
   type ApplicationCommandOptionsIntegerWithAutocomplete = Omit<ApplicationCommandOptionWithChoices<Constants["ApplicationCommandOptionTypes"]["INTEGER"]>, "choices" | "min_value" | "max_value"> & AutocompleteEnabled;
   type ApplicationCommandOptionsIntegerWithoutAutocomplete = Omit<ApplicationCommandOptionWithChoices<Constants["ApplicationCommandOptionTypes"]["INTEGER"]>, "autocomplete" | "min_value" | "max_value"> & AutocompleteDisabledInteger;
@@ -231,7 +231,6 @@ declare namespace Eris {
     id?: string;
   }
   interface ApplicationCommandOption<T extends Constants["ApplicationCommandOptionTypes"][Exclude<keyof Constants["ApplicationCommandOptionTypes"], "SUB_COMMAND" | "SUB_COMMAND_GROUP">]> {
-    channel_types: T extends Constants["ApplicationCommandOptionTypes"]["CHANNEL"] ? ChannelTypes[] | undefined : never;
     description: string;
     descriptionLocalizations?: Record<LocaleStrings, string> | null;
     name: string;
@@ -310,6 +309,9 @@ declare namespace Eris {
     guild_id: string;
     id: string;
     permissions: ApplicationCommandPermissions[];
+  }
+  interface ChannelTypeOption {
+    channel_types?: ChannelTypes[];
   }
 
   // Auto Moderation
