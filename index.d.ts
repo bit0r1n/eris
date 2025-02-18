@@ -3115,6 +3115,7 @@ declare namespace Eris {
     author: User;
     channel: T;
     channelMentions: string[];
+    channelID: string;
     /** @deprecated */
     cleanContent: string;
     command?: Command;
