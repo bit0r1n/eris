@@ -2994,6 +2994,7 @@ declare namespace Eris {
     attachments: Attachment[];
     author: User;
     channel: T;
+    channelID: string;
     channelMentions: string[];
     /** @deprecated */
     cleanContent: string;
